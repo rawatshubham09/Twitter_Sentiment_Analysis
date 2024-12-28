@@ -11,7 +11,6 @@ xgboost
 catboost
 pymongo
 from_root
-evidently==0.2.8
 dill
 PyYAML
 neuro_mf

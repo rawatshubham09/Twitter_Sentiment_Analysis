@@ -1,0 +1,13 @@
+columns:
+  - tweet: category
+  - polarity: int
+
+numerical_columns:
+  - polarity
+
+categorical_columns:
+  - tweet
+
+transform_columns:
+  - tweet
+ 
