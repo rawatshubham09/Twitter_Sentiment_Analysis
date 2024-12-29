@@ -1,0 +1,18 @@
+grid_search:
+  class: GridSearchCV
+  module: sklearn.model_selection
+  params:
+    cv: 3
+    verbose: 3
+model_selection:
+  module_0:
+    class: LogisticRegression
+    module: sklearn.linear_model
+    params:
+      max_iter: 1000
+      solver: saga
+    search_param_grid:
+      max_iter:
+      - 1000
+      solver:
+      - saga

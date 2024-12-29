@@ -33,7 +33,7 @@ class TweetsData:
             else:
                 collection = self.mongo_client[database_name][collection_name]
 
-            df = pd.DataFrame(list(collection.find().limit(200000))) # this will reduce the size of data
+            df = pd.DataFrame(list(collection.find().limit(10000))) # this will reduce the size of data
             if "_id" in df.columns.to_list():
                 df = df.drop(columns=["_id"], axis=1)
             df.replace({"na":np.nan},inplace=True)

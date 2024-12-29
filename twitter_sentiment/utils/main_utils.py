@@ -38,7 +38,6 @@ def load_object(file_path: str) -> object:
     logging.info("Entered the load_object method of utils")
 
     try:
-
         with open(file_path, "rb") as file_obj:
             obj = dill.load(file_obj)
 
@@ -48,7 +47,7 @@ def load_object(file_path: str) -> object:
 
     except Exception as e:
         raise TwetterException(e, sys) from e
-    
+ 
 
 
 def save_numpy_array_data(file_path: str, array: np.array):
@@ -70,16 +69,16 @@ def save_numpy_array_data(file_path: str, array: np.array):
 
 def load_numpy_array_data(file_path: str) -> np.array:
     """
-    load numpy array data from file
+    Load numpy array data from file
     file_path: str location of file to load
     return: np.array data loaded
     """
     try:
-        with open(file_path, 'rb') as file_obj:
-            return np.load(file_obj)
+        array = np.load(file_path, allow_pickle=True).item ()
+        return array
+
     except Exception as e:
         raise TwetterException(e, sys) from e
-
 
 
 

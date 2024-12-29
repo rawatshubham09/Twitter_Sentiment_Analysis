@@ -128,14 +128,16 @@ class DataTransformation:
                 
                 # Assuming input_feature_train_final and 
 
-                combined_data_sparse_train = sp.hstack([train_data_tweet, target_feature_train_df])
+                #combined_data_sparse_train = sp.hstack([train_data_tweet, target_feature_train_df])
 
-                combined_data_sparse_test = sp.hstack([test_data_tweet, target_feature_test_df])
+                #combined_data_sparse_test = sp.hstack([test_data_tweet, target_feature_test_df])
 
 
                 save_object(self.data_transformation_config.transformed_object_file_path, tfidf)
-                save_numpy_array_data(self.data_transformation_config.transformed_train_file_path, array=combined_data_sparse_train)
-                save_numpy_array_data(self.data_transformation_config.transformed_test_file_path, array=combined_data_sparse_test)
+                save_numpy_array_data(self.data_transformation_config.transformed_train_file_path, array=train_data_tweet)
+                save_numpy_array_data(self.data_transformation_config.transformed_test_file_path, array=test_data_tweet)
+                save_numpy_array_data(self.data_transformation_config.transformed_train_y_path, array=target_feature_train_df)
+                save_numpy_array_data(self.data_transformation_config.transformed_test_y_path, array=target_feature_test_df)
 
                 logging.info("Saved the preprocessor object")
 
@@ -146,7 +148,9 @@ class DataTransformation:
                 data_transformation_artifact = DataTransformationArtifact(
                     transformed_object_file_path=self.data_transformation_config.transformed_object_file_path,
                     transformed_train_file_path=self.data_transformation_config.transformed_train_file_path,
-                    transformed_test_file_path=self.data_transformation_config.transformed_test_file_path
+                    transformed_test_file_path=self.data_transformation_config.transformed_test_file_path,
+                    transformed_train_y_path=self.data_transformation_config.transformed_train_y_path,
+                    transformed_test_y_path=self.data_transformation_config.transformed_test_y_path
                 )
                 return data_transformation_artifact
             else:
