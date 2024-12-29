@@ -41,9 +41,11 @@ class ModelTrainer:
             logging.info(f"train shape: {train.shape}, test shape: {test.shape}")
             train = train.toarray()
             test = test.toarray()
-            train_y = train_y.toarray()
-            test_y = test_y.toarray()
+            train_y = train_y.toarray().ravel()
+            test_y = test_y.toarray().ravel()
+
             print("Chal gaya Bhai")
+
             x_train, y_train, x_test, y_test = train, train_y, test, test_y
 
             best_model_detail = model_factory.get_best_model(
