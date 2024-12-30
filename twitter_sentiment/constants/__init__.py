@@ -27,6 +27,8 @@ CURRENT_YEAR = date.today().year
 PREPROCSSING_OBJECT_FILE_NAME = "preprocessing.pkl"
 SCHEMA_FILE_PATH = os.path.join("config", "schema.yaml")
 
+TFIDF_DIR = "backup"
+TFIDF_NAME = "preprocessing.pkl"
 
 """
 Data Ingestion related constant start with DATA_INGESTION VAR NAME

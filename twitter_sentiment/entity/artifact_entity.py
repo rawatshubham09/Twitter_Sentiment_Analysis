@@ -20,6 +20,10 @@ class DataTransformationArtifact:
     transformed_test_y_path:str
 
 @dataclass
+class tfidfArtifact:
+    data_transformation_dir: str
+
+@dataclass
 class ClassificationMetricArtifact:
     f1_score:float
     precision_score:float

@@ -43,7 +43,9 @@ class DataTransformationConfig:
                                                     TRAIN_FILE_Y_NAME.replace("csv", "npy"))
     transformed_test_y_path: str = os.path.join(data_transformation_dir, DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR,
                                                     TEST_FILE_Y_NAME.replace("csv", "npy"))
-
+@dataclass
+class tfidfConfig:
+    data_transformation_dir: str = os.path.join(TFIDF_DIR, TFIDF_NAME)
 
 @dataclass
 class ModelTrainerConfig:
@@ -67,6 +69,9 @@ class ModelPusherConfig:
     s3_model_key_path: str = MODEL_FILE_NAME
 
 
-
+@dataclass
+class TweetsPredictorConfig:
+    model_file_path: str = MODEL_FILE_NAME
+    model_bucket_name: str = MODEL_BUCKET_NAME
     
     

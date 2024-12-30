@@ -119,12 +119,13 @@ class ModelEvaluation:
         On Failure  :   Write an exception log and then raise an exception
         """  
         try:
+            logging.info("Inside model evaluation initiate_model_evaluation")
             evaluate_model_response = self.evaluate_model()
             s3_model_path = self.model_eval_config.s3_model_key_path
 
             model_evaluation_artifact = ModelEvaluationArtifact(
                 #is_model_accepted=evaluate_model_response.is_model_accepted,
-                is_model_accepted=False
+                is_model_accepted=False,
                 s3_model_path=s3_model_path,
                 trained_model_path=self.model_trainer_artifact.trained_model_file_path,
                 changed_accuracy=evaluate_model_response.difference)

@@ -7,7 +7,6 @@ seaborn
 scipy
 scikit-learn
 imblearn
-xgboost
 catboost
 pymongo
 from_root

@@ -2,6 +2,7 @@ from twitter_sentiment.cloud_storage.aws_storage import SimpleStorageService
 from twitter_sentiment.exception import TwetterException
 from twitter_sentiment.entity.estimator import TweetsModel
 import sys
+from twitter_sentiment.logger import logging
 from pandas import DataFrame
 
 
@@ -23,6 +24,7 @@ class TweetsEstimator:
 
     def is_model_present(self,model_path):
         try:
+            logging.info("Inside_is_model_present s3 estimator")
             return self.s3.s3_key_path_available(bucket_name=self.bucket_name, s3_key=model_path)
         except TwetterException as e:
             print(e)
@@ -33,7 +35,7 @@ class TweetsEstimator:
         Load the model from the model_path
         :return:
         """
-
+        logging.info("Inside S3 estimator load model")
         return self.s3.load_model(self.model_path,bucket_name=self.bucket_name)
 
     def save_model(self,from_file,remove:bool=False)->None:
@@ -44,6 +46,7 @@ class TweetsEstimator:
         :return:
         """
         try:
+            logging.info("Inside S3 estimator save model")
             self.s3.upload_file(from_file,
                                 to_filename=self.model_path,
                                 bucket_name=self.bucket_name,
@@ -59,6 +62,7 @@ class TweetsEstimator:
         :return:
         """
         try:
+            logging.info("Inside S3 estimator predict")
             if self.loaded_model is None:
                 self.loaded_model = self.load_model()
             return self.loaded_model.predict(dataframe=dataframe)
