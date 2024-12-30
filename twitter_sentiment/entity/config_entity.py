@@ -46,6 +46,7 @@ class DataTransformationConfig:
 @dataclass
 class tfidfConfig:
     data_transformation_dir: str = os.path.join(TFIDF_DIR, TFIDF_NAME)
+    predict_model_dir = os.path.join(TFIDF_DIR,OUTPUT_MODEL_NAME)
 
 @dataclass
 class ModelTrainerConfig:

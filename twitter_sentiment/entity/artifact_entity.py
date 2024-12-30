@@ -22,6 +22,7 @@ class DataTransformationArtifact:
 @dataclass
 class tfidfArtifact:
     data_transformation_dir: str
+    predict_model_dir: str
 
 @dataclass
 class ClassificationMetricArtifact:

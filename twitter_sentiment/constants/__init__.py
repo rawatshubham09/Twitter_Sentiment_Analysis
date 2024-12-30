@@ -5,7 +5,6 @@ DATABASE_NAME = "TWEETS"
 
 COLLECTION_NAME = "tweets_data"
 
-
 REGION_NAME = "ap-south-1"
 
 PIPELINE_NAME: str = "tweets"
@@ -29,6 +28,7 @@ SCHEMA_FILE_PATH = os.path.join("config", "schema.yaml")
 
 TFIDF_DIR = "backup"
 TFIDF_NAME = "preprocessing.pkl"
+OUTPUT_MODEL_NAME = "model.pkl"
 
 """
 Data Ingestion related constant start with DATA_INGESTION VAR NAME

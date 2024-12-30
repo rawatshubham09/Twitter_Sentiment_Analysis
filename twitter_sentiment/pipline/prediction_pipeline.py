@@ -11,6 +11,7 @@ from twitter_sentiment.utils.main_utils import read_yaml_file, clean_text, load_
 from pandas import DataFrame
 
 tfidf = load_object(tfidfConfig.data_transformation_dir)
+pred_model = load_object(tfidfConfig.predict_model_dir)
 
 class TweetsData:
     def __init__(self, tweet):
@@ -82,18 +83,19 @@ class TweetsClassifier:
                 model_path=self.prediction_pipeline_config.model_file_path,
             )
             
+
             print(dataframe["tweet"])
             # preprocessing the data
-            x = clean_text(dataframe["tweet"][0])
-            print(x)
+            try:
+                result =  model.predict(dataframe)
+            except:
+                x = clean_text(dataframe["tweet"][0])
 
-            x = tfidf.transform([x])
-            x = x.toarray()
+                x = tfidf.transform([x])
+                x = x.toarray()
 
-            print(x)
-
-            result =  model.predict(x)
-            
+                result = pred_model.predict(x)
+             
             print(result)
             return result
         

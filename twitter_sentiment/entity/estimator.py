@@ -27,10 +27,14 @@ class TweetsModel:
         try:
             logging.info("Using the trained model to get predictions")
 
-            transformed_feature = self.preprocessing_object.transform(dataframe)
+            print(" inside estimator")
+            logging.info(dataframe)
+            #transformed_feature = self.preprocessing_object.transform(dataframe["tweet"][0])
+
+            #transformed_feature = transformed_feature.toarray()
 
             logging.info("Used the trained model to get predictions")
-            return self.trained_model_object.predict(transformed_feature)
+            return self.trained_model_object.predict(dataframe)
 
         except Exception as e:
             raise TwetterException(e, sys) from e
